@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Cartomancy demo</title>
+	<script type="text/javascript" src="cartomancy.js"></script>
+	<style>
+		html,body{
+			display: flex;
+			width: 100%;
+			height: 100%;
+			flex-direction: column;
+			padding: 0;
+			margin: 0;
+		}
+		#controller{
+			background-color: #ddd;
+			padding: 10px;
+		}
+		#playground{
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="controller">
+		Pick a javascript file to load or select it from the list
+		<input id="js_file_input" type="text" placeholder="Javascript file to load."/>
+		<select id="js_file_select">
+			<option value="dummy.js">Dummy game 1</option>
+			<option value=".">Load the file specified in the text box</option>
+			<option value="hyperbolic_card_game.js">Hyperbolic Game</option>
+		</select>
+		<button id="load_js_button">Load the selected file!</button>
+	</div>
+	<div id="playground">
+
+	</div>
+	<script>
+		// File loading logic.
+		load_js_button.onclick = () => {
+			let v = js_file_select.value;
+			if(v === "."){
+				v = js_file_input.value;
+			}
+			// reset playground and run the script.
+			playground.innerHTML = "";
+			
+			let s = document.createElement("script");
+			s.src = v;
+			document.head.appendChild(s);
+			document.head.removeChild(s);
+		};
+	</script>
+</body>
+</html>

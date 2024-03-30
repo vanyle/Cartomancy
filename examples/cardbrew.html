@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Cartomancy demo</title>
+	<script type="text/javascript" src="../cartomancy.js"></script>
+	<style>
+		html,body{
+			display: flex;
+			width: 100%;
+			height: 100%;
+			flex-direction: column;
+			padding: 0;
+			margin: 0;
+		}
+		#playground{
+			width: 100%;
+			height: 100%;
+		}
+		.card-cartomancy > .name-cartomancy{
+			font-size:2em;
+			text-align: center;
+		}
+		.card-cartomancy{
+			display:flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+	</style>
+</head>
+<body>
+	<div id="playground"></div>
+	<script>
+		let game = new CardGame(playground);
+
+		let template = new CardTemplate("Soon?","Coming soon!");
+		let card = new VisibleCard(template, {});
+		card.rotation = 5;
+		card.backgroundColor = "#dfd";
+		card.x = 100;
+		card.y = 200;
+		card.updateDomElement(); // update rotation and color on screen
+		game.addBoardElement(card);
+	</script>
+</body>
+</html>
